@@ -70,14 +70,14 @@ class BagContentsCollectionViewController: UICollectionViewController {
         }
         
         let die = diceBag[indexPath.section][indexPath.row]
+        let label = UILabel(frame: cell.bounds)
+        label.textAlignment = .Center
+        label.textColor = UIColor .whiteColor()
         
         cell.bounds.size.width = 50
         cell.bounds.size.height = 50
-        cell.
         cell.layer.cornerRadius = 10.0
         
-        let label = UILabel(frame: cell.bounds)
-
         label.textAlignment = .Center
         label.textColor = UIColor.whiteColor()
  

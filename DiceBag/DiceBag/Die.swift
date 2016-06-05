@@ -47,5 +47,6 @@ struct Die{
     func rollIt() -> Int {
         return faceValues[Int(arc4random_uniform(UInt32(faceValues.count)))]
     }
+    
 }
 
