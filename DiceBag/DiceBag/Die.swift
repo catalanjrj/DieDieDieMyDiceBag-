@@ -30,11 +30,11 @@ enum DieType {
     var diceColor: UIColor {
         switch self {
         case .D4:
-            return UIColor.blueColor()
-        case .D6:
             return UIColor.redColor()
+        case .D6:
+            return UIColor.blueColor()
         case .D10:
-            return UIColor.cyanColor()
+            return UIColor.greenColor()
         case .D20:
             return UIColor.orangeColor()
         }
@@ -43,7 +43,9 @@ enum DieType {
 struct Die{
     var type:DieType
     var faceValues: Array<Int> { return type.diceRange }
-
+    var color : UIColor{
+    return type.diceColor
+    }
     func rollIt() -> Int {
         return faceValues[Int(arc4random_uniform(UInt32(faceValues.count)))]
     }

@@ -24,6 +24,9 @@ class BagContentsCollectionViewController: UICollectionViewController {
     let numberOfD20 = 5
     
     override func viewDidLoad() {
+        
+        self.title = "Dice"
+        
 //diceBag goes here
         var index = 0
         while index < numberOfD4 {
@@ -73,18 +76,43 @@ class BagContentsCollectionViewController: UICollectionViewController {
         let label = UILabel(frame: cell.bounds)
         label.textAlignment = .Center
         label.textColor = UIColor .whiteColor()
-        
-        cell.bounds.size.width = 50
-        cell.bounds.size.height = 50
+        label.text = String(die.rollIt())
+        cell.contentView.addSubview(label)
+        cell.bounds.size.width = 45
+        cell.bounds.size.height = 45
         cell.layer.cornerRadius = 10.0
+        cell.layer.backgroundColor = die.color.CGColor
+        
         
         label.textAlignment = .Center
         label.textColor = UIColor.whiteColor()
  
-        
-        cell.contentView.addSubview(label)
-        
         return cell
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent!) {
+        if(event.subtype == UIEventSubtype.MotionShake) {
+            let alert = UIAlertController(title: "Shaken",
+                                          message: "Not Stirred",
+                                          preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK",
+                style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            collectionView!.reloadData()
+        }
     }
     
 
