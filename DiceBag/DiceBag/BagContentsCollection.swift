@@ -109,10 +109,14 @@ class BagContentsCollectionViewController: UICollectionViewController {
                                           preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK",
                 style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
+          self.presentViewController(alert, animated: true, completion: nil)
+            let alert2 = UIAlertController(title:"shakeAgain", message:"do it", preferredStyle: UIAlertControllerStyle.Alert)
+            alert2.addAction(UIAlertAction(title: "again!", style: UIAlertActionStyle.Default, handler: nil))
+
+        
             collectionView!.reloadData()
         }
+        
     }
     
 
