@@ -58,12 +58,33 @@ class BagContentsCollectionViewController: UICollectionViewController {
 
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
         return diceBag.count
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return diceBag[section].count
     }
+    func collectionView(collectionView: UICollectionView, titleForHeaderInSection : String) -> String{
+        switch diceBag.count{
+        case 0:
+        return "D4"
+        case 1:
+        return "D6"
+        case 2:
+        return "D10"
+        case 3:
+        return "D20"
+        
+        default:
+            return "you should not be seeing this ever!!"
+        }
+        
+        
+        
+
+    }
+    
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("dieCell", forIndexPath: indexPath)
@@ -119,7 +140,4 @@ class BagContentsCollectionViewController: UICollectionViewController {
         
     }
     
-
-    
-
 }
